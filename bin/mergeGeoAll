@@ -1,0 +1,32 @@
+#!/bin/bash
+
+## @file mergeGeoAll
+## @brief shell script that merges tiff images into high contrast geotiff image
+## @author Gabriel Estima Correia Milanesi Castanheira de Souza
+##
+## @date 05/19/2024
+
+
+
+#unzips file with tiff images in it
+unzip *.zip
+
+#selects the right images to run the python script
+vvfile=$(echo *VV_-_decibel_gamma0.tiff)
+vhfile=$(echo *VH_-_decibel_gamma0.tiff)
+
+#names the output file as the date of the images+"-RES". The extention is ".tif"
+resname="${vvfile:0:11}RES.tif"
+
+#runs the python script to generate high contrat image
+tiffmerger.py $vvfile $vhfile $resname 
+
+#regenerates geographical metadata from one of the base tiff images
+exiftool -overwrite_original -TagsFromFile $vvfile $resname
+
+#deletes unwanted tiff images that were extracted in the process
+#BE CAREFUL, THIS WILL WIPE ALL THE ".tiff" FILES IN THE CURRENT DIRECTORY
+#to disable the auto-remove feature, use flage "-k" in the first argument after the command 
+if (( $# <= 1)) ||  (($# >= 1)) && [ "$1" != "-k" ]   ; then
+	rm *.tiff
+fi
