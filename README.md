@@ -19,5 +19,13 @@
 
 #### Obs2.: Inside the base files lie two example images that are the expected result from the implemented algorithm with their respective base .zip files 
 
+## Example of usage:
+- Base images:
+    - VV image: ![VV](https://github.com/Gabriel-estima/HighContrastTiffForBodiesOfWater/assets/117593727/bf001c9c-b8cb-44eb-92cb-96ace31912d6)
+    - VH image: ![VH](https://github.com/Gabriel-estima/HighContrastTiffForBodiesOfWater/assets/117593727/0a6e3c8c-2cf8-499c-b371-5e10800d4b89)
+- Expected result:
+
+![RES](https://github.com/Gabriel-estima/HighContrastTiffForBodiesOfWater/assets/117593727/87ef56a0-4f00-42bd-8796-31ecee66b53c)
+
 
 
